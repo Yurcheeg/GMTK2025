@@ -44,15 +44,16 @@ public class LinePainter : MonoBehaviour
 
             _edgeCollider = _lines.Peek().GetComponent<EdgeCollider2D>();
         }
+
         _lines.Peek().positionCount--;
         OnPointCountDecreased?.Invoke();
 
-        List<Vector2> temp = new();
+        List<Vector2> positions = new();
 
         for (int i = 0; i < _lines.Peek().positionCount; i++)
-            temp.Add(_lines.Peek().GetPosition(i));
+            positions.Add(_lines.Peek().GetPosition(i));
 
-        _edgeCollider.points = temp.ToArray();
+        _edgeCollider.points = positions.ToArray();
     }
 
     private void Update()
