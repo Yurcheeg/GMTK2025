@@ -1662,7 +1662,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "A/D to move \nLeft click to draw\nZ to remove last vertex (point)\nR to
-    restart scene \nSpace to pause"
+    restart scene \nSpace to pause\nEnter to start"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d141ab60e48f55d4ca6c82e982b7d6a0, type: 2}
   m_sharedMaterial: {fileID: -3789884064916227236, guid: d141ab60e48f55d4ca6c82e982b7d6a0, type: 2}

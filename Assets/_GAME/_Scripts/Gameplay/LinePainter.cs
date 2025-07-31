@@ -20,10 +20,15 @@ public class LinePainter : MonoBehaviour
 
     private Stack<Vector2> _drawPoints = new();
 
-    private Vector2 MousePosition =>
+    public Vector2 MousePosition =>
         Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
     public bool CanPaint { get; set; } = true;
+
+    //HACK: idk
+    public float Offset => _offset;
+
+    public Stack<Vector2> DrawPoints => _drawPoints;
 
     /// <summary>
     /// Deletes the previous vertex and/or line, depending on whether or not there are any visible vertices left
@@ -56,24 +61,7 @@ public class LinePainter : MonoBehaviour
         _edgeCollider.points = positions.ToArray();
     }
 
-    private void Update()
-    {
-        if (CanPaint == false)
-            return;
-
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            CreateLine();
-        }
-        else if (Mouse.current.leftButton.isPressed)
-        {
-            //small offset in case of accidental missclick
-            if (Vector2.Distance(MousePosition, _drawPoints.Peek()) > _offset)
-                UpdateLine(MousePosition);
-        }
-    }
-
-    private void CreateLine()
+    public void CreateLine()
     {
         _currentLine = Instantiate(_linePrefab);
         _lines.Push(_currentLine.GetComponent<LineRenderer>());
@@ -94,7 +82,7 @@ public class LinePainter : MonoBehaviour
         _edgeCollider.points = _drawPoints.ToArray();
     }
 
-    private void UpdateLine(Vector2 newPoint)
+    public void UpdateLine(Vector2 newPoint)
     {
         _drawPoints.Push(newPoint);
 
