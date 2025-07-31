@@ -1,9 +1,13 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class LinePainter : MonoBehaviour
 {
+    public System.Action OnPointCountIncreased;
+    public System.Action OnPointCountDecreased;
+
     [SerializeField] private GameObject _linePrefab;
 
     [SerializeField] private float _offset;
@@ -19,8 +23,43 @@ public class LinePainter : MonoBehaviour
     private Vector2 MousePosition =>
         Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
+    public bool CanPaint { get; set; } = true;
+
+    /// <summary>
+    /// Deletes the previous vertex and/or line, depending on whether or not there are any visible vertices left
+    /// </summary>
+    public void DeletePreviousPoint()
+    {
+        if (_lines.Count <= 0)
+            return;
+
+        //2 first points are ignored because they are in the same place (negligeable)
+        if (_lines.Peek().positionCount <= 2)
+        {
+            Destroy(_lines.Peek());
+            _lines.Pop();
+
+            if (_lines.Count <= 0)
+                return;
+
+            _edgeCollider = _lines.Peek().GetComponent<EdgeCollider2D>();
+        }
+        _lines.Peek().positionCount--;
+        OnPointCountDecreased?.Invoke();
+
+        List<Vector2> temp = new();
+
+        for (int i = 0; i < _lines.Peek().positionCount; i++)
+            temp.Add(_lines.Peek().GetPosition(i));
+
+        _edgeCollider.points = temp.ToArray();
+    }
+
     private void Update()
     {
+        if (CanPaint == false)
+            return;
+
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             CreateLine();
@@ -31,10 +70,6 @@ public class LinePainter : MonoBehaviour
             if (Vector2.Distance(MousePosition, _drawPoints.Peek()) > _offset)
                 UpdateLine(MousePosition);
         }
-
-        //HACK: Test implementation. Replace
-        if (Keyboard.current.zKey.wasPressedThisFrame)
-            DeletePreviousPoint();
     }
 
     private void CreateLine()
@@ -65,32 +100,7 @@ public class LinePainter : MonoBehaviour
         _lines.Peek().positionCount++;
         _lines.Peek().SetPosition(_lines.Peek().positionCount - 1, newPoint);
 
+        OnPointCountIncreased?.Invoke();
         _edgeCollider.points = _drawPoints.ToArray();
-    }
-
-    public void DeletePreviousPoint()
-    {
-        if (_lines.Count <= 0)
-            return;
-
-        //2 first points are ignored because they are in the same place (negligeable)
-        if (_lines.Peek().positionCount <= 2)
-        {
-            Destroy(_lines.Peek());
-            _lines.Pop();
-
-            if (_lines.Count <= 0)
-                return;
-
-            _edgeCollider = _lines.Peek().GetComponent<EdgeCollider2D>();
-        }
-        _lines.Peek().positionCount--;
-
-        List<Vector2> temp = new();
-
-        for (int i = 0; i < _lines.Peek().positionCount; i++)
-            temp.Add(_lines.Peek().GetPosition(i));
-
-        _edgeCollider.points = temp.ToArray();
     }
 }
