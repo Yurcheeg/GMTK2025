@@ -9,7 +9,11 @@ public class MouseCursor : MonoBehaviour
 
     private void SetPosition() => transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
-    private void Awake() => _spriteRenderer = GetComponent<SpriteRenderer>();
+    private void Awake()
+    {
+        Cursor.visible = false;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void Update()
     {
