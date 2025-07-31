@@ -1,10 +1,10 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class LinePainter : MonoBehaviour
 {
+    //ugh
     public System.Action OnPointCountIncreased;
     public System.Action OnPointCountDecreased;
 

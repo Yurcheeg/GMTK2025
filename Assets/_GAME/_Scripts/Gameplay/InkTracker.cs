@@ -5,18 +5,10 @@ public class InkTracker : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Slider _inkSlider;
     [SerializeField] private LinePainter _linePainter;
 
-    private void Start()
-    {
-        _inkSlider.value = _inkSlider.maxValue;        
-    }
+    private void Start() => _inkSlider.value = _inkSlider.maxValue;
 
-    private void Update()
-    {
-        if (_inkSlider.value == _inkSlider.minValue)
-            _linePainter.CanPaint = false;
-        else
-            _linePainter.CanPaint = true;
-    }
+    //if more than min amount of ink - you can paint
+    private void Update() => _linePainter.CanPaint = _inkSlider.value != _inkSlider.minValue;
 
     private void OnPointCountIncreased() => _inkSlider.value--;
 
