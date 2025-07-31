@@ -1,4 +1,5 @@
 using UnityEngine;
+
 /// <summary>
 /// Temporary script to test the functionality inside a build
 /// Attached to main camera

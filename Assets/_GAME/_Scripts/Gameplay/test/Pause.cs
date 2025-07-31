@@ -12,8 +12,5 @@ public class Pause : MonoBehaviour
             _isPaused = !_isPaused;
             Time.timeScale = _isPaused ? 0f : 1f;
         }
-
-        if (Time.timeScale == 0f)
-            print("game is paused");
     }
 }

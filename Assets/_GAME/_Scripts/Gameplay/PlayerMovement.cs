@@ -9,12 +9,9 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody2D _rigidbody;
 
-    void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
+    private void Awake() => _rigidbody = GetComponent<Rigidbody2D>();
 
-    void Update()
+    private void Update()
     {
         if (Keyboard.current.dKey.isPressed)
             _rigidbody.AddForce(_speed * Time.deltaTime * Vector2.right,ForceMode2D.Impulse);
