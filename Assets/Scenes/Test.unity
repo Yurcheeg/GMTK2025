@@ -322,7 +322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb1379a01cdfec419cf89c0d2cedf5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
 --- !u!1 &306759409
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _linePrefab: {fileID: 8725697809606417291, guid: c252f77c0a740c74eae52a9873af39c2, type: 3}
-  _offset: 0.1
+  _offset: 0.4
 --- !u!1 &580472371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,7 +1382,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A/D to move \nLeft click to draw\nR to restart scene \nSpace to pause"
+  m_text: "A/D to move \nLeft click to draw\nZ to remove last vertex (point)\nR to
+    restart scene \nSpace to pause"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
