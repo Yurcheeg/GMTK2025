@@ -18,12 +18,6 @@ public class Player : MonoBehaviour
     /// <param name="speed"></param>
     public void Push(Vector2 force, float speed) => _rigidbody.AddForce(force * speed, ForceMode2D.Impulse);
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out Pickable pickable))
-            pickable.PickUp();
-    }
-
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();

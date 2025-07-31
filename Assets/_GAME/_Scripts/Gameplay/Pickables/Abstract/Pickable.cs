@@ -23,5 +23,7 @@ public abstract class Pickable : MonoBehaviour
             return;
 
         _player = player;
+
+        PickUp();
     }
 }
