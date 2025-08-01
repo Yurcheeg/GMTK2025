@@ -167,10 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 960, y: 640}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -497,6 +497,7 @@ GameObject:
   - component: {fileID: 306759411}
   - component: {fileID: 306759413}
   - component: {fileID: 306759414}
+  - component: {fileID: 306759415}
   m_Layer: 0
   m_Name: game state mngr
   m_TagString: Untagged
@@ -531,7 +532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22899fae4f5938b4db62153d5eae378e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 580472377}
 --- !u!114 &306759414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,6 +545,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputHandler: {fileID: 306759413}
+--- !u!114 &306759415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306759409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75456da5215aafe4f838e01973b171f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputHandler: {fileID: 306759413}
+  _player: {fileID: 580472377}
+  _gameStateHandler: {fileID: 306759414}
+  _blockers: []
 --- !u!1 &377337557
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +909,7 @@ MonoBehaviour:
   _linePainter: {fileID: 466744642}
   _inkTracker: {fileID: 1664605673}
   _inputHandler: {fileID: 306759413}
+  _gameStateHandler: {fileID: 306759414}
 --- !u!1 &580472371
 GameObject:
   m_ObjectHideFlags: 0

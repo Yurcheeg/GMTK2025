@@ -12,7 +12,6 @@ public class PaintBlocker : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _collider.isTrigger = true;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out LineRenderer renderer) == false)

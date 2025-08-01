@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class InputHandler : MonoBehaviour
 {
@@ -10,10 +9,6 @@ public class InputHandler : MonoBehaviour
     public event System.Action UndoPressed;
     public event System.Action PaintStarted;
     public event System.Action<Vector2> PaintHeld;
-
-    [SerializeField] private Player _player;
-
-    public bool IsPlayMode { get; private set; }
 
     private void Update()
     {
@@ -25,12 +20,7 @@ public class InputHandler : MonoBehaviour
             ReloadPressed?.Invoke();
 
         if (Keyboard.current.enterKey.wasPressedThisFrame)
-        {
-            //hack
-            _player.Move();
-            IsPlayMode = true;
             PlayModePressed?.Invoke();
-        }
         #endregion
 
         #region Paint Input

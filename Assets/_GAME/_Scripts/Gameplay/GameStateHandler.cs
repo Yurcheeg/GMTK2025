@@ -4,25 +4,33 @@ using UnityEngine.SceneManagement;
 public class GameStateHandler : MonoBehaviour
 {
     [SerializeField] private InputHandler _inputHandler;
-    private bool _isPaused;
 
-    private void OnPausePressed()
+    public bool IsPlayMode { get; private set; }
+    public bool IsPaused { get; private set; }
+
+    public void EnterPlayMode()
     {
-        _isPaused = !_isPaused;
-        Time.timeScale = _isPaused ? 0f : 1f;
+        if (IsPlayMode == false)
+            IsPlayMode = true;
     }
 
-    private void OnReloadPressed() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    
+    private void TogglePause()
+    {
+        IsPaused = !IsPaused;
+        Time.timeScale = IsPaused ? 0f : 1f;
+    }
+
+    private void ReloadScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     private void Awake()
     {
-        _inputHandler.PausePressed += OnPausePressed;
-        _inputHandler.ReloadPressed += OnReloadPressed;
+        _inputHandler.PausePressed += TogglePause;
+        _inputHandler.ReloadPressed += ReloadScene;
     }
 
     private void OnDestroy()
     {
-        _inputHandler.PausePressed -= OnPausePressed;
-        _inputHandler.ReloadPressed -= OnReloadPressed;
+        _inputHandler.PausePressed -= TogglePause;
+        _inputHandler.ReloadPressed -= ReloadScene;
     }
 }

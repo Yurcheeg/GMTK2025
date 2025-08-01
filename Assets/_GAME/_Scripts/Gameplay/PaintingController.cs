@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PaintingController : MonoBehaviour
 {
     [SerializeField] private LinePainter _linePainter;
     [SerializeField] private InkTracker _inkTracker;
     [SerializeField] private InputHandler _inputHandler;
+    [SerializeField] private GameStateHandler _gameStateHandler;
 
     private PaintBlocker[] _blockers;
     private bool _canPaint;
@@ -43,7 +43,7 @@ public class PaintingController : MonoBehaviour
 
     private void OnUndoPressed()
     {
-        if (_inputHandler.IsPlayMode)
+        if (_gameStateHandler.IsPlayMode)
             return;
 
         _linePainter.UndoLastPoint();
@@ -53,7 +53,7 @@ public class PaintingController : MonoBehaviour
 
     private void Update()
     {
-        _canPaint = _inputHandler.IsPlayMode == false
+        _canPaint = _gameStateHandler.IsPlayMode == false
         && LineBlocked == false
         && _inkTracker.HasInk;
 
@@ -61,13 +61,9 @@ public class PaintingController : MonoBehaviour
             _isCurrentlyPainting = false;
     }
 
-    private void Awake()
-    {
-        //hack xd
-        _blockers = FindObjectsByType<PaintBlocker>(FindObjectsSortMode.None);
+    private void Start() => _blockers = FindObjectsByType<PaintBlocker>(FindObjectsSortMode.None); //hack xd
 
-        SubscribeToEvents();
-    }
+    private void Awake() => SubscribeToEvents();
 
     private void OnDestroy() => UnsubscribeFromEvents();
 
