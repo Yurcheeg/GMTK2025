@@ -12,7 +12,7 @@ public class MouseCursor : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
