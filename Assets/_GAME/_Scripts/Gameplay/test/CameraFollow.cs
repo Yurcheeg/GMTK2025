@@ -11,6 +11,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float _speed;
     void LateUpdate()
     {
+        if (_target == null)
+            return;
+
         Vector2 desiredPosition = _target.position;
         Vector2 smoothedPosition = Vector2.Lerp(transform.position,desiredPosition, _speed);
         transform.position = new Vector3(smoothedPosition.x,smoothedPosition.y,transform.position.z);

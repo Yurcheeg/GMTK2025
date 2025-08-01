@@ -6,7 +6,7 @@ public class SpeedUpPickable : Pickable
 
     public override void PickUp()
     {
-        Vector2 forceDirection = transform.position - Player.transform.position;
+        Vector2 forceDirection = (transform.position - Player.transform.position).normalized;
         Player.Push(forceDirection, _speed);
 
         Destroy(gameObject);

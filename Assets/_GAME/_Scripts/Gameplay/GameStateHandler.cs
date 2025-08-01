@@ -14,12 +14,13 @@ public class GameStateHandler : MonoBehaviour
             IsPlayMode = true;
     }
 
+    public void Restart() => ReloadScene();
+
     private void TogglePause()
     {
         IsPaused = !IsPaused;
         Time.timeScale = IsPaused ? 0f : 1f;
     }
-
     private void ReloadScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     private void Awake()

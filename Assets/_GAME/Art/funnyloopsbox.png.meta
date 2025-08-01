@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8ba32b721394612429e83ac85fe50efb
+guid: 8ab626b232387474c95b6be0d22a12a7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4470592730861715767
-    second: cheese_0
+      213: -5635952990455541957
+    second: funnyloopsbox_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 75
+  spritePixelsToUnits: 90
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cheese_0
+      name: funnyloopsbox_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 120
-        height: 60
+        width: 148
+        height: 184
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ce3b85f89345f1c0800000000000000
-      internalID: -4470592730861715767
+      spriteID: b3fc811ad9219c1b0800000000000000
+      internalID: -5635952990455541957
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d85a977a74c59a949bc05eb01c3b44f4
+    spriteID: 924db31026d7ebb4ca2ec72520f732f5
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cheese_0: -4470592730861715767
+      funnyloopsbox_0: -5635952990455541957
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

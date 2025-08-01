@@ -26,7 +26,7 @@ public class LinePainter : MonoBehaviour
             return;
 
         //2 first points are ignored because they are in the same place (negligeable)
-        if (_lines.Peek().positionCount <= 2)
+        if (_lines.Peek() != null && _lines.Peek().positionCount <= 2)
         {
             Destroy(_lines.Peek());
             _lines.Pop();
