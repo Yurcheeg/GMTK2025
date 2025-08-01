@@ -1,10 +1,21 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class PaintBlocker : MonoBehaviour
 {
+    [SerializeField] private LinePainter _linePainter;
     private Collider2D _collider;
 
+    public bool IsLineInsideBlocker { get; private set; }
+
+    private void Update()
+    {
+        if (IsLineInsideBlocker)
+            _linePainter.CanPaint = false;
+        else 
+            _linePainter.CanPaint = true;
+    }
     private void Awake()
     {
         _collider = GetComponent<Collider2D>();
@@ -60,5 +71,6 @@ public class PaintBlocker : MonoBehaviour
         gradient.SetKeys(colorKeys, alphaKeys);
 
         renderer.colorGradient = gradient;
+        IsLineInsideBlocker = anyInside;
     }
 }

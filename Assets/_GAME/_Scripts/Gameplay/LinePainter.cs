@@ -7,11 +7,11 @@ public class LinePainter : MonoBehaviour
     //ugh
     public System.Action OnPointCountIncreased;
     public System.Action OnPointCountDecreased;
-
+    [SerializeField] private InkTracker _inkTracker;
+    [Space]
     [SerializeField] private GameObject _linePrefab;
 
     [SerializeField] private float _offset;
-
     private GameObject _currentLine;
 
     private EdgeCollider2D _edgeCollider;
@@ -19,11 +19,22 @@ public class LinePainter : MonoBehaviour
     private Stack<LineRenderer> _lines = new();
 
     private Stack<Vector2> _drawPoints = new();
+    private bool canPaint;
 
     public Vector2 MousePosition =>
         Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
-    public bool CanPaint { get; set; } = true;
+    public bool CanPaint
+    {
+        get => canPaint;
+        set
+        {
+            if (_inkTracker.HasInk)
+                canPaint = value;
+            else
+                canPaint = false;
+        }
+    }
 
     //HACK: idk
     public float Offset => _offset;

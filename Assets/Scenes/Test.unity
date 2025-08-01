@@ -862,6 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf5c3958409c8844bd9c832ea323106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inkTracker: {fileID: 1664605673}
   _linePrefab: {fileID: 8725697809606417291, guid: c252f77c0a740c74eae52a9873af39c2, type: 3}
   _offset: 0.4
 --- !u!1 &580472371
@@ -1620,6 +1621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c2bd19c601c324d9786c2ae73d6186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linePainter: {fileID: 466744642}
 --- !u!1 &1664605670
 GameObject:
   m_ObjectHideFlags: 0

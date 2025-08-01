@@ -11,6 +11,8 @@ public class InputHandler : MonoBehaviour
     private bool _isPaused = false;
     private bool _isPlayMode = false;
 
+    public bool IsPlayMode => _isPlayMode;
+
     private void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
