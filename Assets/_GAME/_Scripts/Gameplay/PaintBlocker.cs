@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using NUnit.Framework;
+using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class PaintBlocker : MonoBehaviour
 {
     private Collider2D _collider;
+
+    private InkTracker _inkTracker;
 
     public bool IsBlockingLine { get; private set; }
 
@@ -12,6 +15,15 @@ public class PaintBlocker : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _collider.isTrigger = true;
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out LineRenderer renderer) == false)
+            return;
+
+        UpdateColor(renderer);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out LineRenderer renderer) == false)
@@ -37,10 +49,21 @@ public class PaintBlocker : MonoBehaviour
 
         bool anyInside = false;
 
-        foreach (Vector3 position in positions)
+        for (int i = 0; i < positions.Length; i++)
         {
-            if (_collider.OverlapPoint(position))
+            if (_collider.bounds.Contains(positions[i]))
             {
+                //hack
+                if (renderer.positionCount <= 2)
+                {
+                    Destroy(renderer);
+                    anyInside = false;
+                    for (int j = 0; j < renderer.positionCount; j++)
+                        _inkTracker.AddInk();
+                    //unsync w/ slider
+                    continue;
+                }
+
                 anyInside = true;
                 break;
             }
