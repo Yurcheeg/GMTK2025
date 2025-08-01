@@ -10,6 +10,7 @@ public class PaintingController : MonoBehaviour
 
     private PaintBlocker[] _blockers;
     private bool _canPaint;
+    private bool _isCurrentlyPainting = false;
 
     public bool LineBlocked => _blockers.Any(b => b.IsBlockingLine);
 
@@ -19,11 +20,12 @@ public class PaintingController : MonoBehaviour
             return;
 
         _linePainter.CreateNewLine();
+        _isCurrentlyPainting = true;
     }
 
     private void OnPaintHeld(Vector2 mousePosition)
     {
-        if (_canPaint == false)
+        if (_canPaint == false || _isCurrentlyPainting == false)
             return;
 
         Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -33,6 +35,9 @@ public class PaintingController : MonoBehaviour
         {
             _linePainter.AddNewPointToLine(mouseWorldPosition);
             _inkTracker.RemoveInk();
+
+            if (_inkTracker.HasInk == false)
+                _isCurrentlyPainting = false;
         }
     }
 
@@ -46,10 +51,15 @@ public class PaintingController : MonoBehaviour
     }
 
 
-    private void Update() => 
+    private void Update()
+    {
         _canPaint = _inputHandler.IsPlayMode == false
         && LineBlocked == false
         && _inkTracker.HasInk;
+
+        if (_isCurrentlyPainting && _canPaint == false)
+            _isCurrentlyPainting = false;
+    }
 
     private void Awake()
     {
