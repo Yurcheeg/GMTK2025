@@ -14,8 +14,6 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Applies immediate force, pushing the player to the opposite direction
     /// </summary>
-    /// <param name="force"></param>
-    /// <param name="speed"></param>
     public void Push(Vector2 force, float speed) => _rigidbody.AddForce(force * speed, ForceMode2D.Impulse);
 
     private void Awake()

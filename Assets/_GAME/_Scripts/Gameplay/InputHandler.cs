@@ -4,69 +4,43 @@ using UnityEngine.SceneManagement;
 
 public class InputHandler : MonoBehaviour
 {
+    public event System.Action PausePressed;
+    public event System.Action ReloadPressed;
+    public event System.Action PlayModePressed;
+    public event System.Action UndoPressed;
+    public event System.Action PaintStarted;
+    public event System.Action<Vector2> PaintHeld;
+
     [SerializeField] private Player _player;
 
-    [SerializeField] private LinePainter _linePainter;
-
-    private bool _isPaused = false;
-    private bool _isPlayMode = false;
-
-    public bool IsPlayMode => _isPlayMode;
+    public bool IsPlayMode { get; private set; }
 
     private void Update()
     {
+        #region Game State Input
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
-            Pause();
+            PausePressed?.Invoke();
 
         if (Keyboard.current.rKey.wasPressedThisFrame)
-            ReloadScene();
+            ReloadPressed?.Invoke();
 
         if (Keyboard.current.enterKey.wasPressedThisFrame)
-            EnterPlayMode();
+        {
+            //hack
+            _player.Move();
+            IsPlayMode = true;
+            PlayModePressed?.Invoke();
+        }
+        #endregion
 
-        if (_isPlayMode)
-            return;
-
-        HandlePainterInputs();
-    }
-
-    private void HandlePainterInputs()
-    {
+        #region Paint Input
         if (Keyboard.current.zKey.wasPressedThisFrame)
-            _linePainter.DeletePreviousPoint();
-
-        if (_linePainter.CanPaint == false)
-            return;
+            UndoPressed?.Invoke();
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            _linePainter.CreateLine();
-        }
+            PaintStarted?.Invoke();
         else if (Mouse.current.leftButton.isPressed)
-        {
-            //small offset in case of accidental missclick
-            //big enough to be noticeable when removed
-            if (Vector2.Distance(_linePainter.MousePosition, _linePainter.DrawPoints.Peek()) > _linePainter.Offset)
-                _linePainter.UpdateLine(_linePainter.MousePosition);
-        }
+            PaintHeld?.Invoke(Mouse.current.position.ReadValue());
+        #endregion
     }
-
-    private void ReloadScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-    private void Pause()
-    {
-        _isPaused = !_isPaused;
-        Time.timeScale = _isPaused ? 0f : 1f;
-    }
-
-    //no need for exit because of restart button
-    private void EnterPlayMode()
-    {
-        _isPlayMode = true;
-        _linePainter.CanPaint = false;
-        StartPlayerMovement();
-    }
-
-    //no need for stop because of restart button
-    private void StartPlayerMovement() => _player.Move();
 }

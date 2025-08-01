@@ -12,7 +12,7 @@ public class MouseCursor : MonoBehaviour
 
     private void Awake()
     {
-        //Cursor.visible = false;
+        //Cursor.visible = false;//hack: the cursor only becomes invisible in playmode.
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 

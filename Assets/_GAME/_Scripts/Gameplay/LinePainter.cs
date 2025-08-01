@@ -4,47 +4,23 @@ using UnityEngine.InputSystem;
 
 public class LinePainter : MonoBehaviour
 {
-    //ugh
-    public System.Action OnPointCountIncreased;
-    public System.Action OnPointCountDecreased;
-    [SerializeField] private InkTracker _inkTracker;
-    [Space]
-    [SerializeField] private GameObject _linePrefab;
+    [SerializeField] private LineRenderer _linePrefab;
 
     [SerializeField] private float _offset;
-    private GameObject _currentLine;
 
+    private LineRenderer _currentLine;
     private EdgeCollider2D _edgeCollider;
 
     private Stack<LineRenderer> _lines = new();
-
     private Stack<Vector2> _drawPoints = new();
-    private bool canPaint;
 
-    public Vector2 MousePosition =>
-        Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-
-    public bool CanPaint
-    {
-        get => canPaint;
-        set
-        {
-            if (_inkTracker.HasInk)
-                canPaint = value;
-            else
-                canPaint = false;
-        }
-    }
-
-    //HACK: idk
     public float Offset => _offset;
-
     public Stack<Vector2> DrawPoints => _drawPoints;
 
     /// <summary>
     /// Deletes the previous vertex and/or line, depending on whether or not there are any visible vertices left
     /// </summary>
-    public void DeletePreviousPoint()
+    public void UndoLastPoint()
     {
         if (_lines.Count <= 0)
             return;
@@ -62,7 +38,6 @@ public class LinePainter : MonoBehaviour
         }
 
         _lines.Peek().positionCount--;
-        OnPointCountDecreased?.Invoke();
 
         List<Vector2> positions = new();
 
@@ -72,7 +47,7 @@ public class LinePainter : MonoBehaviour
         _edgeCollider.points = positions.ToArray();
     }
 
-    public void CreateLine()
+    public void CreateNewLine()
     {
         _currentLine = Instantiate(_linePrefab);
         _lines.Push(_currentLine.GetComponent<LineRenderer>());
@@ -80,7 +55,7 @@ public class LinePainter : MonoBehaviour
 
         _drawPoints.Clear();
         //store the current pos in case of some insane mouse flick
-        Vector2 startPosition = MousePosition;
+        Vector2 startPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
         //mark two points of the line.
         //they would overlap, therefore not noticeable.
@@ -93,14 +68,13 @@ public class LinePainter : MonoBehaviour
         _edgeCollider.points = _drawPoints.ToArray();
     }
 
-    public void UpdateLine(Vector2 newPoint)
+    public void AddNewPointToLine(Vector2 newPoint)
     {
         _drawPoints.Push(newPoint);
 
         _lines.Peek().positionCount++;
         _lines.Peek().SetPosition(_lines.Peek().positionCount - 1, newPoint);
 
-        OnPointCountIncreased?.Invoke();
         _edgeCollider.points = _drawPoints.ToArray();
     }
 }
