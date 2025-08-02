@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameStateHandler : MonoBehaviour
 {
+    public event Action Paused;
     [SerializeField] private InputHandler _inputHandler;
 
     public bool IsPlayMode { get; private set; }
@@ -12,14 +14,20 @@ public class GameStateHandler : MonoBehaviour
     {
         if (IsPlayMode == false)
             IsPlayMode = true;
+
+        IsPaused = false;
+        Time.timeScale = 1f;
     }
 
     public void Restart() => ReloadScene();
 
+    public void Pause() => TogglePause();
+
     private void TogglePause()
     {
-        IsPaused = !IsPaused;
-        Time.timeScale = IsPaused ? 0f : 1f;
+        IsPaused = true;
+        Time.timeScale = 0f;
+        Paused?.Invoke();
     }
     private void ReloadScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 

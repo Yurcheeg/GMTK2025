@@ -5,10 +5,31 @@ public class InputHandler : MonoBehaviour
 {
     public event System.Action PausePressed;
     public event System.Action ReloadPressed;
-    public event System.Action PlayModePressed;
+    public event System.Action PlayPressed;
     public event System.Action UndoPressed;
     public event System.Action PaintStarted;
     public event System.Action<Vector2> PaintHeld;
+
+    [SerializeField] private UnityEngine.UI.Button _playButton;
+    [SerializeField] private UnityEngine.UI.Button _reloadButton;
+    //[SerializeField] private UnityEngine.UI.Button _muteButton;
+    [SerializeField] private UnityEngine.UI.Button _undoButton;
+    [Space]
+    [SerializeField] private GameStateHandler _gameStateHandler;
+
+    private void Awake()
+    {
+        _playButton.onClick.AddListener(() =>
+        {
+            if (_gameStateHandler.IsPaused)
+                PlayPressed?.Invoke();
+            else
+                PausePressed?.Invoke();
+        });
+        _reloadButton.onClick.AddListener(() => PausePressed?.Invoke());
+        //_muteButton.onClick.AddListener(() => PausePressed?.Invoke());
+        _undoButton.onClick.AddListener(() => UndoPressed?.Invoke());
+    }
 
     private void Update()
     {
@@ -20,7 +41,7 @@ public class InputHandler : MonoBehaviour
             ReloadPressed?.Invoke();
 
         if (Keyboard.current.enterKey.wasPressedThisFrame)
-            PlayModePressed?.Invoke();
+            PlayPressed?.Invoke();
         #endregion
 
         #region Paint Input

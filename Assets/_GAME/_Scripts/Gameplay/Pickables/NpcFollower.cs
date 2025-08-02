@@ -9,8 +9,9 @@ public class NpcFollower : Pickable
 
     public override void PickUp()
     {
-        Collider2D.enabled = false;
-        
+        //Collider2D.enabled = false;
+
+        Collider2D.isTrigger = false;
         Follow();
         //todo: maybe set to false when the game starts?
         _textWindow.SetActive(false);

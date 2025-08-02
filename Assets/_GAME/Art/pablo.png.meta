@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 341cd9d3688625541ae5fa2c81b46841
+guid: 988a0ad9e0e802a4aa50c5aa56a395a7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7806698085541564105
-    second: spaghet_0
+      213: -548002081635235735
+    second: pablo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spaghet_0
+      name: pablo_hat
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 268
-        height: 60
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        y: 44
+        width: 56
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 731b29ee37909a390800000000000000
-      internalID: -7806698085541564105
+      spriteID: 390c529f584889d489462ff2fcbdbd89
+      internalID: -548002081635235735
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0671a4e504232f845b49bf823424f032
+    spriteID: cb19d97cc59b81e41864e03f24091524
     internalID: 0
     vertices: []
     indices: 
@@ -146,9 +146,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":2,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: False
     nameFileIdTable:
-      spaghet_0: -7806698085541564105
+      pablo_hat: -548002081635235735
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 341cd9d3688625541ae5fa2c81b46841
+guid: 017547fdeff92d541aa966c89f85f909
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7806698085541564105
-    second: spaghet_0
+      213: 9209264654050273417
+    second: pencil-new 1_0
+  - first:
+      213: -4108342953398765938
+    second: pencil-new 1_1
+  - first:
+      213: 8342605868760211180
+    second: pencil-new 1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +119,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spaghet_0
+      name: pencil-new 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 268
-        height: 60
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 16
+        y: 24
+        width: 32
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 731b29ee37909a390800000000000000
-      internalID: -7806698085541564105
+      spriteID: 9882a3bf861edcf70800000000000000
+      internalID: 9209264654050273417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pencil-new 1_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 24
+        width: 32
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cee9a8c26d3e6c370800000000000000
+      internalID: 8342605868760211180
       vertices: []
       indices: 
       edges: []
@@ -138,7 +166,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0671a4e504232f845b49bf823424f032
+    spriteID: e2315dace6fb6e44bb0162a85111b863
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +176,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spaghet_0: -7806698085541564105
+      pencil-new 1_0: 9209264654050273417
+      pencil-new 1_1: -4108342953398765938
+      pencil-new 1_2: 8342605868760211180
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 341cd9d3688625541ae5fa2c81b46841
+guid: 59d4e3c64c0b91c4b9bf74e8d80ae621
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7806698085541564105
-    second: spaghet_0
+      213: -8649512544667484345
+    second: unmute_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spaghet_0
+      name: unmute_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 268
-        height: 60
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 731b29ee37909a390800000000000000
-      internalID: -7806698085541564105
+      spriteID: 74f3fceea22c6f780800000000000000
+      internalID: -8649512544667484345
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0671a4e504232f845b49bf823424f032
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spaghet_0: -7806698085541564105
+      unmute_0: -8649512544667484345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

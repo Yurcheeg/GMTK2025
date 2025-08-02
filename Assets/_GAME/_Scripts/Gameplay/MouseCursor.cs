@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class MouseCursor : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
+
+    public static bool IsOverUI => EventSystem.current.IsPointerOverGameObject(Mouse.current.deviceId);
 
     public Vector2 GetPosition() => transform.position;
 

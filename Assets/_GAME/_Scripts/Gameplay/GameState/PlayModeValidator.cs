@@ -1,9 +1,10 @@
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using UnityEngine;
 
 public class PlayModeValidator : MonoBehaviour
 {
+    public event Action PlayModeEntered;
     [SerializeField] private InputHandler _inputHandler;
     [SerializeField] private Player _player;
     [SerializeField] private GameStateHandler _gameStateHandler;
@@ -15,6 +16,7 @@ public class PlayModeValidator : MonoBehaviour
         {
             _gameStateHandler.EnterPlayMode();
             _player.Move();
+            PlayModeEntered?.Invoke();
         }
         else //todo: replace with a popup
             Debug.LogWarning("Cannot enter playmode - invalid lines present");
@@ -24,7 +26,7 @@ public class PlayModeValidator : MonoBehaviour
 
     private void Start() => _blockers = FindObjectsByType<PaintBlocker>(FindObjectsSortMode.None);//hack xd
 
-    private void Awake() => _inputHandler.PlayModePressed += OnPlayModePressed;
+    private void Awake() => _inputHandler.PlayPressed += OnPlayModePressed;
 
-    private void OnDestroy() => _inputHandler.PlayModePressed -= OnPlayModePressed;
+    private void OnDestroy() => _inputHandler.PlayPressed -= OnPlayModePressed;
 }

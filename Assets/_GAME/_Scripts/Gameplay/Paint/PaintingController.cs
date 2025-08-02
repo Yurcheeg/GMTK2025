@@ -53,9 +53,12 @@ public class PaintingController : MonoBehaviour
 
     private void Update()
     {
+
+
         _canPaint = _gameStateHandler.IsPlayMode == false
         && LineBlocked == false
-        && _inkTracker.HasInk;
+        && _inkTracker.HasInk
+        && MouseCursor.IsOverUI == false;
 
         if (_isCurrentlyPainting && _canPaint == false)
             _isCurrentlyPainting = false;
