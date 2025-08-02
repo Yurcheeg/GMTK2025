@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Npc_follower : Pickable
+public class NpcFollower : Pickable
 {
     [SerializeField] private float _speed;
     [SerializeField] private GameObject _textWindow;
