@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c3e86b7efbb84304fa680f246092485c
+guid: 175a86cf4796f5b458a188e8b219d47d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7226090832515466545
-    second: bluecerealshouting1_0
+      213: -8065550270564295484
+    second: hz_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bluecerealshouting1_0
+      name: hz_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 72
-        height: 76
+        width: 452
+        height: 356
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1358ac2a35b384460800000000000000
-      internalID: 7226090832515466545
+      spriteID: 4cc95f413c8611090800000000000000
+      internalID: -8065550270564295484
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8864d0595fbb8e04d9c0f83145ea3a63
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bluecerealshouting1_0: 7226090832515466545
+      hz_0: -8065550270564295484
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -47,6 +47,5 @@ public class WinScreen : MonoBehaviour
         _image.gameObject.SetActive(false);
 
         _rectTransform.anchoredPosition = _hiddenPosition;
-        Invoke(nameof(OnGoalReached), 1f);
     }
 }

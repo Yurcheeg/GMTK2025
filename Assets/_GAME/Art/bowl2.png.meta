@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c3e86b7efbb84304fa680f246092485c
+guid: 0b5db677dabb99e46a3cad1f6b05a597
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7226090832515466545
-    second: bluecerealshouting1_0
+      213: -8137669759446092205
+    second: bowl2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bluecerealshouting1_0
+      name: bowl2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 72
-        height: 76
+        width: 124
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1358ac2a35b384460800000000000000
-      internalID: 7226090832515466545
+      spriteID: 356f6c01870311f80800000000000000
+      internalID: -8137669759446092205
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8864d0595fbb8e04d9c0f83145ea3a63
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bluecerealshouting1_0: 7226090832515466545
+      bowl2_0: -8137669759446092205
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

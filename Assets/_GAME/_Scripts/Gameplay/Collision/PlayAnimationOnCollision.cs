@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayAnimationOnCollision : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private int _triggerId;
+    private const int _triggerId = 0;
     private bool _onCooldown = false;
 
     private void Awake()
