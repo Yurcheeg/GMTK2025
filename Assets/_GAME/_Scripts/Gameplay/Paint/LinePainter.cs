@@ -25,13 +25,18 @@ public class LinePainter : MonoBehaviour
         if (_lines.Count <= 0)
             return;
 
-        if(_lines.Peek() == null)
+        if (_lines.Peek() == null || _lines.Peek().gameObject == null)
         {
             _lines.Pop();
 
-            if(_lines.Count > 0)
-                _edgeCollider = _lines.Peek().GetComponent<EdgeCollider2D>();
-            
+            if (_lines.Count <= 0)
+                return;
+
+            if (_lines.Peek() == null)
+                return;
+
+            _edgeCollider = _lines.Peek().GetComponent<EdgeCollider2D>();
+
             return;
         }
 
@@ -44,7 +49,11 @@ public class LinePainter : MonoBehaviour
             if (_lines.Count <= 0)
                 return;
 
+            if (_lines.Peek() == null)
+                return;
+
             _edgeCollider = _lines.Peek().GetComponent<EdgeCollider2D>();
+
             return;
         }
 

@@ -43,10 +43,18 @@ public class PaintBlocker : MonoBehaviour
 
     private void UpdateColor(LineRenderer renderer)
     {
+        if (renderer == null)
+            return;
+
+        if (renderer.gameObject == null)
+            return;
+
+        if(renderer.positionCount == 0) 
+            return;
+
         Vector3[] positions = new Vector3[renderer.positionCount];
         renderer.GetPositions(positions);
 
-        Gradient gradient = new();
 
         bool anyInside = false;
 
@@ -54,15 +62,17 @@ public class PaintBlocker : MonoBehaviour
         {
             if (_collider.OverlapPoint(positions[i]))
             {
-                //hack
+                //a line with two or less points is practically invisible. so ignore it
                 if (renderer.positionCount <= 2)
                 {
-                    anyInside = false;
                     for (int j = 0; j < renderer.positionCount; j++)
                         _inkTracker.AddInk();
-                    Destroy(renderer);
-                    //unsync w/ slider
-                    continue;
+
+                    IsBlockingLine = false;
+
+                    Destroy(renderer.gameObject);
+
+                    return;
                 }
 
                 anyInside = true;
@@ -70,6 +80,8 @@ public class PaintBlocker : MonoBehaviour
             }
         }
 
+        Gradient gradient = new();
+        
         //set both start and end of the gradient to either red or white
         GradientColorKey[] colorKeys = {
             new(anyInside ? Color.red : Color.white, 0f),
