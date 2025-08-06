@@ -1,4 +1,4 @@
-#Funny loops
+# Funny loops
 
 This game was made in 96 hours for GMTK 2025 Game Jam (Theme: Loop).
 
