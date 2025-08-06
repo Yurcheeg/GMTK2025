@@ -25,16 +25,27 @@ public class LinePainter : MonoBehaviour
         if (_lines.Count <= 0)
             return;
 
-        //2 first points are ignored because they are in the same place (negligeable)
-        if (_lines.Peek() != null && _lines.Peek().positionCount <= 2)
+        if(_lines.Peek() == null)
         {
-            Destroy(_lines.Peek());
+            _lines.Pop();
+
+            if(_lines.Count > 0)
+                _edgeCollider = _lines.Peek().GetComponent<EdgeCollider2D>();
+            
+            return;
+        }
+
+        //2 first points are ignored because they are in the same place (negligeable)
+        if (_lines.Peek().positionCount <= 2)
+        {
+            Destroy(_lines.Peek().gameObject);
             _lines.Pop();
 
             if (_lines.Count <= 0)
                 return;
 
             _edgeCollider = _lines.Peek().GetComponent<EdgeCollider2D>();
+            return;
         }
 
         _lines.Peek().positionCount--;

@@ -14,6 +14,7 @@ public class PaintBlocker : MonoBehaviour
     {
         _collider = GetComponent<Collider2D>();
         _collider.isTrigger = true;
+        _inkTracker = FindAnyObjectByType<InkTracker>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -51,15 +52,15 @@ public class PaintBlocker : MonoBehaviour
 
         for (int i = 0; i < positions.Length; i++)
         {
-            if (_collider.bounds.Contains(positions[i]))
+            if (_collider.OverlapPoint(positions[i]))
             {
                 //hack
                 if (renderer.positionCount <= 2)
                 {
-                    Destroy(renderer);
                     anyInside = false;
                     for (int j = 0; j < renderer.positionCount; j++)
                         _inkTracker.AddInk();
+                    Destroy(renderer);
                     //unsync w/ slider
                     continue;
                 }
