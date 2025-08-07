@@ -27,7 +27,6 @@ public class InputHandler : MonoBehaviour
                 PausePressed?.Invoke();
         });
         _reloadButton.onClick.AddListener(() => PausePressed?.Invoke());
-        //_muteButton.onClick.AddListener(() => PausePressed?.Invoke());
         _undoButton.onClick.AddListener(() => UndoPressed?.Invoke());
     }
 
